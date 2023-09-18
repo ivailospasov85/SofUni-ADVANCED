@@ -8,29 +8,24 @@
 // The output should be printed on the console.
 
 
-function coocingByNumbers(input, ...op) {
+function cookingByNumber(...arguments) {
 
-    let number = Number(input)
+    let number = Number(arguments[0])
 
-    for (let el of op) {
-        if (el === 'chop') {
-            number = number / 2
-            console.log(number);
-        } else if (el === 'dice') {
-            number = Math.sqrt(number)
-            console.log(number);
-        } else if (el === 'spice') {
-            number += 1
-            console.log(number);
-        } else if (el === 'bake') {
-            number *= 3
-            console.log(number);
-        } else if (el === 'fillet') {
-            number = number * 80 / 100
-            console.log(number);
-        }
+    let operations = {
+        'chop': () => number = number / 2,
+        'dice': () => number = Math.sqrt(number),
+        'spice': () => number += 1,
+        'bake': () => number *= 3,
+        'fillet': () => number * 80 / 100
     }
+
+    for (let i = 1; i < arguments.length; i++) {
+        number = operations[arguments[i]]()
+        console.log(number);
+    }
+
 
 }
 
-coocingByNumbers('9', 'dice', 'spice', 'chop', 'bake', 'fillet')
+cookingByNumber('9', 'dice', 'spice', 'chop', 'bake', 'fillet')
