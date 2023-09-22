@@ -8,22 +8,31 @@
 
 function addOrRemove(command) {
 
-    let initialNumber = 1
-
+    let initialNumber = 0
+    let result = []
     command.map((x) => {
-        console.log(initialNumber);
+
+        initialNumber += 1
+
         if (x === 'add') {
-            initialNumber += 1
+            result.push(initialNumber)
         } else if (x === 'remove') {
-            initialNumber -= 1
+
+            result.pop(initialNumber)
         }
     })
+    if(result.length>0){
+        console.log(result.join('\n'));
+    }else{
+        console.log('Empty');
+    }
+    
 }
 
-addOrRemove(['add', 
-'add', 
-'remove', 
-'add', 
-'add']
+addOrRemove(['add',
+    'add',
+    'remove',
+    'add',
+    'add']
 
 )

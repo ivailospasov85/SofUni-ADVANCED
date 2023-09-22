@@ -21,10 +21,7 @@ function printEveryNElement(array, n) {
 
         }
     }
-    result.forEach(x => {
-        console.log(x);
-    })
-
+    return result
 }
 
 printEveryNElement(['5',
@@ -32,5 +29,5 @@ printEveryNElement(['5',
     '31',
     '4',
     '20'],
-   2
+    2
 )

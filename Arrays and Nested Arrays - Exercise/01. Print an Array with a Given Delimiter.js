@@ -5,12 +5,12 @@ function printArr(array, string) {
 
     let delimiter = string
     let result = []
-   
+
     array.forEach(element => {
         result.push(element)
         result.push(delimiter)
     });
-   
+
     let junk = result.pop()
     console.log(result.join(''));
 
