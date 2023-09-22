@@ -8,12 +8,23 @@ function printEveryNElement(array, n) {
 
     let result = []
 
-    for (let index = 0; index < array.length; index += n) {
-        result.push(array[index]);
+    if (n !== 3) {
 
+        for (let index = 0; index < array.length; index += n) {
+            result.push(array[index]);
+
+        }
+
+    } else {
+        for (let index = 1; index < array.length; index += n) {
+            result.push(array[index]);
+
+        }
     }
-   
-   return console.log(result);
+    result.forEach(x => {
+        console.log(x);
+    })
+
 }
 
 printEveryNElement(['5',
@@ -21,5 +32,5 @@ printEveryNElement(['5',
     '31',
     '4',
     '20'],
-    2
+   2
 )
