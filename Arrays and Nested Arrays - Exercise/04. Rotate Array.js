@@ -3,9 +3,15 @@
 // The output is the resulting array after the rotations. The elements should be printed on one line, separated by a single space.
 
 
-function rotateArray() {
+function rotateArray(array, rotation) {
 
-    
+
+    for (let index = 0; index < rotation; index++) {
+        let number = array.pop()
+        array.unshift(number)
+    }
+
+    console.log(array.join(' '));
 
 }
 
