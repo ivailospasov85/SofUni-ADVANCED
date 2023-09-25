@@ -9,13 +9,17 @@ function clorieObject(input) {
 
     let result = {}
 
-    for (const el of input) {
-        if (input.indexOf(el) % 2 !== 0)
+    for (let index = 0; index < input.length; index += 2) {
+        let key = input[index];
+        let data = input[index + 1];
 
+        result[key] = data
 
-            result[el] = Number[el] + 1
     }
-
+    console.log(result);
+    // for (const el in result) {
+    // //    console.log(`${el}:${result[el]}`);
+    // }
 
 
 
