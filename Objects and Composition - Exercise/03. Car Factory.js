@@ -56,16 +56,13 @@ function carFactory(input) {
             color: input.color,
         }
     }
+    let wheels = []
     if (Number(input.wheelsize) % 2 === 0) {
-        let wheels = (input.wheelsize) - 1
-        carResult.wheels = {
-            wheels: `[${wheels},${wheels},${wheels},${wheels}]`
-        }
+        wheels = (input.wheelsize) - 1
+        carResult.wheels = carResult.wheels = new Array(4).fill(wheels)
     } else {
-        let wheels = Number(input.wheelsize)
-        carResult.wheels = {
-            wheels: `[${wheels},${wheels},${wheels},${wheels}]`
-        }
+        wheels = input.wheelsize
+        carResult.wheels = new Array(4).fill(wheels)
 
     }
     return carResult
