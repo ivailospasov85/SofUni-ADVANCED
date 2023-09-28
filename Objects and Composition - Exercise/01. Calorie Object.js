@@ -11,19 +11,12 @@ function clorieObject(input) {
 
     for (let index = 0; index < input.length; index += 2) {
         let key = input[index];
-        let data = input[index + 1];
+        let data = Number(input[index + 1]);
 
         result[key] = data
 
     }
     console.log(result);
-    // for (const el in result) {
-    // //    console.log(`${el}:${result[el]}`);
-    // }
-
-
-
-
 }
 
 
