@@ -12,12 +12,12 @@ function heroicInventory(input) {
     let result = []
     let herosStorage = {}
     // let deconstructions =
-    items = []
+    items = ''
     for (let element of input) {
         [heroName, heroLevel, ...rest] = element.split(' / ')
 
 
-        items = rest ? rest.toString().split(', ') : []
+        items = rest ? rest.toString().split(', ') : ' '
 
         herosStorage = {
             name: heroName,
@@ -28,7 +28,7 @@ function heroicInventory(input) {
 
     }
 
-    console.table(JSON.stringify(result));
+    console.log(JSON.stringify(result));
 }
 
 heroicInventory(['Isacc / 25 / Apple, GravityGun',

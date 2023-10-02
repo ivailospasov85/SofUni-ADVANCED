@@ -16,6 +16,8 @@
 
 
 function janNotation(input) {
+
+    let result = []
     let operands = {}
     let numbers = []
     let operators = []
@@ -26,25 +28,47 @@ function janNotation(input) {
         } else {
             operators.push(iterator)
         }
-    }
-    let a = numbers.pop()
-    let b = numbers.pop()
-    let operation = operators.shift()
 
+    }
+
+    if (operators.length === 0 || numbers.length - 1 > operators.length) {
+        console.log("Error: too many operands!");
+        return;
+    } else if (numbers.length <= operators.length) {
+        console.log('Error: not enough operands!')
+        return
+    }
     operands = {
         "+": (a, b) => a + b,
         "-": (a, b) => a - b,
         "*": (a, b) => a * b,
         "/": (a, b) => a / b,
     }
-       
+    for (const el of input) {
+        if (typeof (el) === "number") {
+            result.push(el)
+        } else {
+            let b = result.pop()
+            let a = result.pop()
+            let res = operands[el](a, b)
+            result.push(res)
+        }
+    }
+    if (result.length === 1) {
+        console.log(result.join());
+        return
     }
 
+}
 
 
-janNotation([5,
-    3,
-    4,
-    '*',
-    '-']
+
+
+
+
+janNotation([31,
+    2,
+    '+',
+    11,
+    '/',]
 )
