@@ -8,17 +8,10 @@ function addItem() {
 
     let newItems = document.createElement('li')
     newItems.textContent = text.value
-    text.value = ''
+    text.value=''
+    
 
-    let deleteElement = document.createElement('a')
-    deleteElement.href = '#'
-    deleteElement.textContent = '[Delete]'
-
-    deleteElement.addEventListener('click', (e) => {
-        e.currentTarget.parentElement.remove();
-    });
-
-    newItems.appendChild(deleteElement);
+    
     items.appendChild(newItems)
 
 
