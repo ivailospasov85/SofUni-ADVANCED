@@ -13,7 +13,8 @@ function solve() {
 
    function onClick() {
 debugger
-      let inputText = document.querySelectorAll('#inputs textarea')
+      let inputText = document.querySelector('#inputs textarea')
+      inputText=inputText.values
       let input = JSON.parse(inputText)
       let outputBestRestaurant = document.querySelector('#bestRestaurant p')
       let outputBestWorkers = document.querySelector('#workers p')

@@ -23,4 +23,4 @@ function generateSequence(n, k) {
 }
 
 
-generateSequence(6, 3)
+  generateSequence(6, 3)
