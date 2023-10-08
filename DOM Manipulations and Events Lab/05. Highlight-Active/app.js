@@ -1,24 +1,3 @@
-function focused() {
-    let searchedClassDiv = document.querySelectorAll('div')
-
-    let textInputs = document.querySelectorAll("input[type='text']")
-    // let searchedClassDivTwo = Array.from(searchedClassDiv)
-    // let junk = searchedClassDivTwo.shift()
-
-    textInputs.forEach(element => {
-        element.addEventListener('mousemove', (e) => {
-            if (e.target) {
-
-                e.target.parentElement.background.color = grey
-            }
-            if (!e.target) {
-
-                e.target.style.background.color = white
-            }
-        })
-    });
-
-}
 
 
 
