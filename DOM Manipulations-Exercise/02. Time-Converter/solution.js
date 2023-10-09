@@ -18,24 +18,43 @@ function attachEventsListeners() {
     let allButtons = Array.from(document.querySelectorAll("input[type=button]"))
     allButtons.forEach(button => button.addEventListener('click', getValue))
 
+    let inputs = document.querySelectorAll('"input[type=text]"')
 
 
     function getValue(event) {
         let value = Number(event.target.parentElement.children[1].value)
+        let units = event.target.parentElement.children[1].id
+
+        switch (units) {
+            case 'days': calculates
+                break;
+
+            case 'hours': calculates
+                break;
+
+            case 'minutes': calculates
+                break;
+
+            case ' seconds': calculates
+                break;
+
+
+        }
+
+        function calculates(value) {
+            inputs[0] = Number(value)
+            let cure
+            for (let i = 1; i < inputs.length; i++) {
+
+
+            }
+
+
+        }
+
+        // daysButton.addEventListener("click", calculates)
+        // hoursButton.addEventListener("click", calculates)
+        // minutesButton.addEventListener("click", calculates)
+        // secondsButton.addEventListener("click", calculates)
     }
-
-
-
-    debugger
-    // function calculates(value) {
-    //     let daysOutputValue = Number(value)
-    //     let hoursOutputValue = Number(value) * 24
-    //     let minutesOutputValue = Number(value) * 24 * 60
-    //     let secondsOutputValue = Number(value) * 24 * 60 * 60
-    // }
-
-    // daysButton.addEventListener("click", calculates)
-    // hoursButton.addEventListener("click", calculates)
-    // minutesButton.addEventListener("click", calculates)
-    // secondsButton.addEventListener("click", calculates)
 }
