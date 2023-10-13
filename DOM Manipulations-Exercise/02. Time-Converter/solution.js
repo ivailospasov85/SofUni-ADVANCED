@@ -3,58 +3,42 @@
 
 
 function attachEventsListeners() {
+    let inputsButton = Array.from(document.querySelectorAll('div input[type=button]'))
+    let inputsText = Array.from(document.querySelectorAll('div input[type=text]'))
+    inputsButton.forEach(button => button.addEventListener('click', onclickButton))
 
 
-    // let daysInputText = document.getElementById('days').value
-    // let hoursInputText = document.getElementById('hours').value
-    // let minutesInputText = document.getElementById('minutes').value
-    // let secondsInputText = document.getElementById('seconds').value
-
-    // let daysButton = document.getElementById('daysBtn')
-    // let hoursButton = document.getElementById('hoursBtn')
-    // let minutesButton = document.getElementById('minutesBtn')
-    // let secondsButton = document.getElementById('secondsBtn')
-
-    let allButtons = Array.from(document.querySelectorAll("input[type=button]"))
-    allButtons.forEach(button => button.addEventListener('click', getValue))
-
-    let inputs = document.querySelectorAll('"input[type=text]"')
-
-
-    function getValue(event) {
+    function onclickButton(event) {
         let value = Number(event.target.parentElement.children[1].value)
         let units = event.target.parentElement.children[1].id
 
         switch (units) {
-            case 'days': calculates
+            case 'days': valueConversion(value)
+
                 break;
+            case 'hours': valueConversion(value / 24)
 
-            case 'hours': calculates
                 break;
+            case 'minutes': valueConversion(value / 24 / 60)
 
-            case 'minutes': calculates
                 break;
+            case 'seconds': valueConversion(value / 24 / 60 / 60)
 
-            case ' seconds': calculates
                 break;
-
-
         }
 
-        function calculates(value) {
-            inputs[0] = Number(value)
-            let cure
-            for (let i = 1; i < inputs.length; i++) {
+        function valueConversion(value) {
+            inputsText[0].value = value
+            let currentValue = value * 24
 
+            for (let i = 1; i < inputsText.length; i++) {
+                let textOutput = inputsText[i]
+                textOutput.value = currentValue
+                currentValue *= 60
 
             }
-
-
         }
 
-        // daysButton.addEventListener("click", calculates)
-        // hoursButton.addEventListener("click", calculates)
-        // minutesButton.addEventListener("click", calculates)
-        // secondsButton.addEventListener("click", calculates)
     }
+
 }
