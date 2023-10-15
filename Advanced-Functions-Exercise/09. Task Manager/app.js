@@ -25,9 +25,6 @@ function solve() {
     let descriptionOnSelection1 = document.getElementById('description')
     let dateOnSelection1 = document.getElementById('date')
 
-
-
-
     function onSubmit(e) {
         e.preventDefault()
         let task = taskOnSelection1.value
@@ -39,7 +36,6 @@ function solve() {
         }
 
         let myArticle = createArticle(task, description, date)
-
         openSection.children[1].appendChild(myArticle)
 
         taskOnSelection1.value = ''
@@ -52,8 +48,8 @@ function solve() {
         let article = document.createElement("article")
         article.innerHTML =
             `<h3>${task}</h3>
-        <p>Description:${description}</p>
-        <p>Due Date:${date}</p>
+        <p>Description: ${description}</p>
+        <p>Due Date: ${date}</p>
         <div class="flex">
             <button class="green">Start</button>
             <button class="red">Delete</button>
@@ -71,33 +67,32 @@ function solve() {
         }
 
         function moveToProgress(e) {
+            
             const moveArticle = e.target.parentElement.parentElement
-            inProgressSection.appendChild(moveArticle)
-
-            buttonsProgress = article.querySelectorAll('button')
-            delBtn = buttonsProgress[0]
-            finishBtn = buttonsProgress[1]
-            // delBtn.removeEventListener()
-            delBtn.textContent = 'Delete'
-            finishBtn.textContent = "Finish"
-            delBtn.classList.remove('green')
-            delBtn.classList.add('red')
-            finishBtn.classList.remove('red')
-            finishBtn.classList.add('orange')
-            finishBtn.addEventListener('click', moveToComplete)
-            delBtn.addEventListener('click', deleteFromProgress)
+            inProgressSection.children[1].appendChild(moveArticle)
+            
+            startBtn.removeEventListener('click',moveToProgress)
+            startBtn.addEventListener('click', deleteFromProgress)
+            startBtn.textContent='Delete'
+            startBtn.classList.remove('green')
+            startBtn.classList.add('red')
+            deleteBtn.removeEventListener('click', deleteFromOpen)
+            deleteBtn.addEventListener('click', moveToComplete)
+            deleteBtn.textContent="Finish"
+            deleteBtn.classList.remove('red')
+            deleteBtn.classList.add('orange')
+           
         }
 
         function deleteFromProgress(e) {
             const deleteArticle = e.target.parentElement.parentElement
-            inProgressSection.removeChild(deleteArticle)
+            inProgressSection.children[1].removeChild(deleteArticle)
             // completeSection.removeChild(deleteArticle)
         }
 
-
         function moveToComplete(e) {
             const moveArticle = e.target.parentElement.parentElement
-            completeSection.appendChild(moveArticle)
+            completeSection.children[1].appendChild(moveArticle)
             // moveArticle.removeChild()
             e.target.parentElement.remove()
 
@@ -106,8 +101,7 @@ function solve() {
 
     }
 
-
+debugger
 
 }
-
 
