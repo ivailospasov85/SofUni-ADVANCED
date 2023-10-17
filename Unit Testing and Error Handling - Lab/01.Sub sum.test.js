@@ -1,3 +1,5 @@
+const { describe } = require("mocha")
+
 function subSum(arr, start, end) {
 
     if (!Array.isArray(arr)) {
@@ -10,6 +12,12 @@ function subSum(arr, start, end) {
     
     return sum
 
+    describe(   
+
+    )
+
+
+    describe    
 }
 
 subSum([10, 20, 30, 40, 50, 60], 3, 300)

@@ -12,24 +12,24 @@
 
 function getArticleGenerator(articles) {
 
-    arrFromArticle = Array.from(articles)
-    let contentText = document.getElementById("content")
-    const button = document.querySelector('button')
-    const p = document.createElement('p')
-    
-    for (let textEl of arrFromArticle) {
+    arrFromArticle = articles
 
-        function showNext() {
 
-            p.textContent = textEl.textContent
-            contentText.appendChild(p)
+    return () => {
+
+        if (articles.length > 0) {
+            let contentText = document.getElementById("content")
+            let article = document.createElement('article')
+            let textArticle = arrFromArticle.shift()
+            article.textContent = textArticle
+            contentText.appendChild(article)
+
         }
 
     }
-    return showNext
-    debugger
 
 }
+
 
 
 
