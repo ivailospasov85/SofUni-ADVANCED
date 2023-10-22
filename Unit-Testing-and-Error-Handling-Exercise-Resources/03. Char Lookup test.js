@@ -9,6 +9,12 @@ describe('test lookupChar function ', () => {
     it('If the first parameter is number a  second parameter is string return undefined.', () => {
         assert.equal(lookupChar(1, '2'), undefined)
     });
+    it('If the first parameter is number a  second parameter is string return undefined.', () => {
+        assert.equal(lookupChar(0, 1), undefined)
+    });
+    it('If the first parameter is number a  second parameter is string return undefined.', () => {
+        assert.equal(lookupChar("hai", "hui"), undefined)
+    });
     it('If the first parameter is array a  second parameter is string return undefined.', () => {
         assert.equal(lookupChar([], ''), undefined)
     });
@@ -16,25 +22,25 @@ describe('test lookupChar function ', () => {
         assert.equal(lookupChar({}, []), undefined)
     });
     it('If the first parameter is zero a  second parameter is object return undefined.', () => {
-        assert.equal(lookupChar(0, {}), undefined)
+        assert.equal(lookupChar(5, {}), undefined)
     });
     it('If the first parameter is zero a  second parameter is array return undefined.', () => {
-        assert.equal(lookupChar(0, []), undefined)
+        assert.equal(lookupChar(5, []), undefined)
     });
     it('If the first parameter is object a  second parameter is zero return undefined.', () => {
-        assert.equal(lookupChar({}, 0), undefined)
+        assert.equal(lookupChar({}, 5), undefined)
     });
     it('If the first parameter is arrey a  second parameter is zero return undefined.', () => {
-        assert.equal(lookupChar([], 0), undefined)
+        assert.equal(lookupChar([], 5), undefined)
     });
     it('If the first parameter is arrey a  second parameter is zero return undefined.', () => {
         assert.equal(lookupChar([], "hello"), undefined)
     });
     it('If the first parameter is arrey a  second parameter is zero return undefined.', () => {
-        assert.equal(lookupChar({}, "hello"), undefined)
+        assert.equal(lookupChar({}, {}), undefined)
     });
     it('If the first parameter is arrey a  second parameter is zero return undefined.', () => {
-        assert.equal(lookupChar(1, "hello"), undefined)
+        assert.equal(lookupChar([], []), undefined)
     });
     it('If the first parameter is arrey a  second parameter is zero return undefined.', () => {
         assert.equal(lookupChar("", ""), undefined)
@@ -62,10 +68,10 @@ describe('if the parametars are correct but the value of the index is incorrect 
         assert.equal(lookupChar('', -10), "Incorrect index")
     });
     it('value of the index is incorrect a negative number', () => {
-        assert.equal(lookupChar('str', -10,2), "Incorrect index")
+        assert.equal(lookupChar('str', -10, 2), "Incorrect index")
     });
     it('value of the index is incorrect a negative number', () => {
-        assert.equal(lookupChar('s', 10,2), "Incorrect index")
+        assert.equal(lookupChar('s', 10, 2), "Incorrect index")
     });
     it('charAt -10 index', () => {
         assert(lookupChar('', 2), "Incorrect index")

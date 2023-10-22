@@ -53,9 +53,7 @@ describe('mathEnforcer functional test', () => {
         it('If the parameter is A a number 0 i a empty string, the function should return undefined.', () => {
             assert.equal(mathEnforcer.addFive(-1.1), 3.9)
         });
-        it('If the parameter is A a number 0 i a empty string, the function should return undefined.', () => {
-            assert.equal(mathEnforcer.addFive(NaN), NaN)
-        });
+       
 
 
 
@@ -116,9 +114,7 @@ describe('mathEnforcer functional test', () => {
         it('If the parameter is A a number 0 i a empty string, the function should return undefined.', () => {
             assert.equal(mathEnforcer.subtractTen(null), null)
         });
-        it('If the parameter is A a number 0 i a empty string, the function should return undefined.', () => {
-            assert.equal(mathEnforcer.subtractTen(NaN), NaN)
-        });
+       
 
 
     });
@@ -154,10 +150,10 @@ describe('mathEnforcer functional test', () => {
             assert.equal(mathEnforcer.sum("10", {}), undefined)
         });
         it('If the parameter is NOT a number is a null, the function should return undefined.', () => {
-            assert.equal(mathEnforcer.sum({}, {}), undefined)
+            assert.equal(mathEnforcer.sum({}, 5), undefined)
         });
         it('If the parameter is NOT a number i undefined, the function should return undefined.', () => {
-            assert.equal(mathEnforcer.sum([], []), undefined)
+            assert.equal(mathEnforcer.sum(5, []), undefined)
         });
         it('If the parameter is NOT a number is a null, the function should return undefined.', () => {
             assert.equal(mathEnforcer.sum(1, 2), 3)
@@ -195,9 +191,7 @@ describe('mathEnforcer functional test', () => {
         it('If the parameter is NOT a number i undefined, the function should return undefined.', () => {
             assert.equal(mathEnforcer.sum(undefined, undefined), undefined)
         });
-        it('If the parameter is NOT a number i undefined, the function should return undefined.', () => {
-            assert.equal(mathEnforcer.sum(NaN, NaN), NaN)
-        });
+       
     });
 
 });

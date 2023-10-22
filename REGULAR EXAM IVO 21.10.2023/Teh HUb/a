@@ -1,0 +1,132 @@
+window.addEventListener('load', solve);
+
+function solution() {
+    const employee = document.getElementById('employee');
+    const category = document.getElementById('category');
+    const urgency = document.getElementById('urgency');
+    const team = document.getElementById('team');
+    const description = document.getElementById('description');
+    const addButton = document.getElementById('add-btn');
+    const previewList = document.querySelector('.preview-list');
+    const editButton = document.getElementById('edit');
+    const continueButton = document.getElementById('continue-btn');
+    const pendingList = document.querySelector('.pending-list');
+    const resolvedList = document.querySelector('.resolved-list');
+  
+    addButton.addEventListener('click', onAddFunction);
+  
+    function onAddFunction(e) {
+      if (
+        employee.value !== '' &&
+        category.value !== '' &&
+        urgency.value !== '' &&
+        team.value !== '' &&
+        description.value !== ''
+      ) {
+        const employeeValue = employee.value;
+        const categoryValue = category.value; // Use .value for the select element
+        const urgencyValue = urgency.value;
+        const teamValue = team.value;
+        const descriptionValue = description.value;
+  
+        const listItem = document.createElement('li');
+        const article = document.createElement('article');
+  
+        const pEmployee = document.createElement('p');
+        pEmployee.textContent = `Employee: ${employeeValue}`;
+        const pCategory = document.createElement('p');
+        pCategory.textContent = `Category: ${categoryValue}`;
+        const pUrgency = document.createElement('p');
+        pUrgency.textContent = `Urgency: ${urgencyValue}`;
+        const pTeam = document.createElement('p');
+        pTeam.textContent = `Team: ${teamValue}`;
+        const pDescription = document.createElement('p');
+        pDescription.textContent = `Description: ${descriptionValue}`;
+  
+        article.appendChild(pEmployee);
+        article.appendChild(pCategory);
+        article.appendChild(pUrgency);
+        article.appendChild(pTeam);
+        article.appendChild(pDescription);
+  
+        listItem.appendChild(article);
+        previewList.appendChild(listItem);
+  
+        employee.value = '';
+        category.value = '';
+        urgency.value = '';
+        team.value = '';
+        description.value = '';
+  
+        addButton.disabled = true;
+        editButton.disabled = false;
+        continueButton.disabled = false;
+      }
+    }
+  
+    editButton.addEventListener('click', editFunctionBtn);
+  
+    function editFunctionBtn() {
+      const items = previewList.querySelectorAll('li');
+      if (items.length > 0) {
+        const lastItem = items[items.length - 1];
+        const employeeValue = lastItem.querySelector('p:nt h2').textContent;
+        const categoryValue = lastItem.querySelector('p:nt span').textContent;
+        const descriptionValue = lastItem.querySelector('p:nt p').textContent;
+  
+        employee.value = employeeValue;
+        category.value = categoryValue;
+        description.value = descriptionValue;
+  
+        lastItem.remove();
+  
+        addButton.disabled = false;
+        editButton.disabled = true;
+        continueButton.disabled = true;
+      }
+    }
+  
+    continueButton.addEventListener('click', function () {
+      const items = previewList.querySelectorAll('li');
+      if (items.length > 0) {
+        const lastItem = items[items.length - 1];
+  
+        const listItem = document.createElement('li');
+        listItem.innerHTML = lastItem.innerHTML + '<button class="delete">Delete</button>';
+  
+        pendingList.appendChild(listItem);
+  
+        lastItem.remove();
+  
+        addButton.disabled = false;
+        editButton.disabled = true;
+        continueButton.disabled = true;
+      }
+    });
+  
+    previewList.addEventListener('click', function (e) {
+      if (e.target && e.target.className === 'delete') {
+        e.target.parentElement.remove();
+      }
+    });
+  
+    pendingList.addEventListener('click', function (e) {
+      if (e.target && e.target.className === 'delete') {
+        e.target.parentElement.remove();
+      } else if (e.target && e.target.className === 'continue') {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = e.target.parentElement.innerHTML;
+        listItem.innerHTML = listItem.innerHTML.replace('<button class="continue">Continue</button>', '<button class="resolve">Resolve</button>');
+  
+        resolvedList.appendChild(listItem);
+  
+        e.target.parentElement.remove();
+      }
+    });
+  
+    resolvedList.addEventListener('click', function (e) {
+      if (e.target && e.target.className === 'delete') {
+        e.target.parentElement.remove();
+      }
+    });
+  }
